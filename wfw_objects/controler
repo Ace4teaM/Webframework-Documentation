@@ -1,0 +1,2 @@
+^(?:\s*\/\*)\n(?:[\s\*]+)?(?<description>[^\n]+)\n(?<content>(?:[^*]|\*[^\/])+)(?:\*\/)(?:[\n\s]*)class(?:[\s]+)(?<name>[A-Za-z_]+)(?:[\s]+)extends(?:[\s]+)cApplicationCtrl(?:[\n\s]*)
+^(?:[\s\*]*)(?<type>[A-Za-z]+)(?:\s*)\:(?:\s*)(?<content>[^\n]+)

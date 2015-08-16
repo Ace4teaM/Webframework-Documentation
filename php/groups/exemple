@@ -1,0 +1,2 @@
+^(?:\s*)(?:exemple[s]?|example[s]?|sample[s]?)?\:\n[\s]*(?<content>(?!\n{2,})(?:.|\n[^\n])*)\n
+(?<content>[^\0]*)

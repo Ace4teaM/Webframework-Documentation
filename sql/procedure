@@ -1,0 +1,2 @@
+^(?:\s*\/\*\*)(?<content>(?:[^*]|\*[^\/])+)(?:\*\/)(?:[\n\s]*)create(?:.)*function(?:[\s]+)(?<name>[A-Za-z_]+)(?:[\n\s]*)\((?<params>[^\)]*)\)(?:[\n\s]*)returns(?:[\n\s]*)(?<returntype>[A-Za-z_]+)
+^(?:[\s\*]*)\@(?<type>[A-Za-z]+)(?:\s+)(?<content>[^\n]+)

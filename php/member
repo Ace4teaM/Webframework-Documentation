@@ -1,0 +1,2 @@
+^(?:\s*\/\/)(?<content>(?:[^\n])+)(?:[\n\s]+)(?:public[\s]+|protected[\s]+|private[\s]+)(?:static[\s]+)?\$(?<name>[A-Za-z_]+)(?:[\s=]+)?(?<default>[^\;]*)?;$
+^(?:[\s\*]*)\@(?<type>[A-Za-z]+)(?:\s+)(?<content>[^\n]+)

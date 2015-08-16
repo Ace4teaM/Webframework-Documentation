@@ -1,0 +1,2 @@
+^(?:\s*)(?:champ[s]\s+compl[eé]mentaire[s]?|optional\s+field[s]?)(?:\s*)\:(?:\s*)\n(?<content>(?!\n{2,})(?:.|\n[^\n])*)
+^(?:[\n\s]*)(?<content>[^\n]+)

@@ -1,0 +1,257 @@
+﻿<!doctype html>
+<html itemscope="" itemtype="http://schema.org/WebPage" lang="fr">
+<head>
+    <title>Webframework API</title>
+    <!-- jquery -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <!-- JS Tree -->
+    <link rel="stylesheet" href="jstree/themes/default/style.min.css" />
+    <script src="jstree/jstree.min.js"></script>
+    <!-- styles-->
+    <link rel="stylesheet" type="text/css" href="wfw.css" />
+    <!-- MarkDown
+    <script src="Markdown/Markdown.Converter.js"></script>
+    <script src="Markdown/Markdown.Sanitizer.js"></script> -->
+    <!-- MarkDown -->
+    <script src="Showdown/showdown.min.js"></script>
+    <script src="Showdown/extensions/table.min.js"></script>
+</head>
+<body>
+    <!-- En-Tete -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="inline header">
+                <img src="logo_icon.png" height="50" />
+                <h1>Webframework</h1>
+                <p>API Référence</p>
+            </div>
+        </div>
+    </div>
+    <!-- Navigation verticale -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="inline header">
+                <span>Librairie </span>
+                <select id="library"></select>
+                <span>Version </span>
+                <select id="version"></select>
+                <span>Type </span>
+                <select id="list_by">
+                    <option value="function">Fonction</option>
+                    <option value="class">Classe</option>
+                    <option value="method">Méthode</option>
+                    <option value="procedure">Procèdures SQL</option>
+                    <option value="template_action">Actions XML Template</option>
+                    <option value="controler">Controleurs</option>
+                </select>
+                <span>Objet </span>
+                <select id="object_list"></select>
+                <span id="filename"></span>
+                <button id="GO">GO</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <!-- Navigation Arborescence -->
+        <div class="col-md-3">
+            <div id="tree_menu">
+                <p>Webframework</p>
+                <div id="jstree">
+                    <!-- in this example the tree is populated from inline HTML -->
+                    <ul>
+                        <li data-jstree='{"opened":true}'>
+                            Introduction
+                            <ul>
+                                <li>Concept</li>
+                                <li>Application vs Librairies</li>
+                            </ul>
+                        </li>
+                        <li data-jstree='{"opened":true}'>
+                            Guide
+                            <ul>
+                                <li id="tree_guide_app" article="Application/Configuration.md">Application</li>
+                                <li id="tree_guide_cfg" article="Application/Configuration.md">Configuration</li>
+                                <li id="tree_guide_template">Templates
+                                    <ul>
+                                        <li id="tree_guide_template_xml">XML</li>
+                                        <li id="tree_guide_template_text">Texte</li>
+                                    </ul>
+                                </li>
+                                <li id="tree_guide_module">Modules
+                                    <ul>
+                                        <li id="tree_guide_module_user">User</li>
+                                        <li id="tree_guide_module_mail">Mail</li>
+                                        <li id="tree_guide_module_writer">Writer</li>
+                                        <li id="tree_guide_module_io">IO</li>
+                                        <li id="tree_guide_module_catalog">Catalog</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li data-jstree='{"opened":true}'>
+                            Références
+                            <ul>
+                                <li id="tree_ref_sql">
+                                    SQL
+                                    <ul>
+                                        <li id="tree_ref_sql_table">Tables</li>
+                                        <li id="tree_ref_sql_proc">Procèdures</li>
+                                    </ul>
+                                </li>
+                                <li id="tree_ref_php">
+                                    PHP
+                                    <ul>
+                                        <li id="tree_ref_php_class">Classes</li>
+                                        <li id="tree_ref_php_func">Fonctions</li>
+                                    </ul>
+                                </li>
+                                <li id="tree_ref_config">Config</li>
+                                <li id="tree_ref_xml">XML Template</li>
+                                <li id="tree_ref_controler">Controleurs</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Contenu -->
+        <div class="col-md-9">
+            <div id="templates" class="content"> 
+                <!-- Article Template (ShowDown extension)-->
+                <div id="article"></div>
+                <!-- Function Template -->
+                <div id="function">
+                    <h1 name="name"></h1>
+                    <p name="brief"></p>
+                    <h2>Syntaxe</h2>
+                    <pre>function <span name="name"></span>(&nbsp;<span name="params"></span>&nbsp;)</pre>
+                    <h2>Arguments</h2>
+                    <p name="param"></p>
+                    <h2>Retourne</h2>
+                    <p name="return"></p>
+                    <h2>Remarques</h2>
+                    <p name="remarks"></p>
+                    <h2>Exemples</h2>
+                    <pre name="exemple"></pre>
+                </div>
+                <!-- Procedure Template -->
+                <div id="procedure">
+                    <h1 name="name"></h1>
+                    <p name="brief"></p>
+                    <h2>Syntaxe</h2>
+                    <pre>function <span name="name"></span>(&nbsp;<span name="params"></span>&nbsp;)<br />returns <span name="returntype"></span></pre>
+                    <h2>Arguments</h2>
+                    <p name="param"></p>
+                    <h2>Retourne</h2>
+                    <p name="return"></p>
+                    <h2>Remarques</h2>
+                    <p name="remarks"></p>
+                    <h2>Exemples</h2>
+                    <pre name="exemple"></pre>
+                </div>
+                <!-- Member Template -->
+                <div id="member">
+                    <h1 name="name"></h1>
+                    <p name="brief"></p>
+                    <h2>Syntaxe</h2>
+                    <pre>$<span name="name"></span> = <span name="default"></span></pre>
+                    <h2>Remarques</h2>
+                    <p name="remarks"></p>
+                    <h2>Exemples</h2>
+                    <pre name="exemple"></pre>
+                </div>
+                <!-- Method Template -->
+                <div id="method">
+                    <h1 name="name"></h1>
+                    <p name="brief"></p>
+                    <h2>Syntaxe</h2>
+                    <pre>function <span name="name"></span>(&nbsp;<span name="params"></span>&nbsp;)</pre>
+                    <h2>Arguments</h2>
+                    <p name="param"></p>
+                    <h2>Retourne</h2>
+                    <p name="return"></p>
+                    <h2>Remarques</h2>
+                    <p name="remarks"></p>
+                    <h2>Exemples</h2>
+                    <pre name="exemple"></pre>
+                </div>
+                <!-- Class Template -->
+                <div id="class">
+                    <h1 name="name"></h1>
+                    <p name="brief"></p>
+                    <h2>Syntaxe</h2>
+                    <pre>class <span name="name"></span></pre>
+                    <h2>Méthodes</h2>
+                    <div class="row">
+                        <div id="class_methods"></div>
+                    </div>
+                    <h2>Membres</h2>
+                    <div class="row">
+                        <div id="class_members"></div>
+                    </div>
+                    <h2>Remarques</h2>
+                    <p name="remarks"></p>
+                    <h2>Exemples</h2>
+                    <pre name="exemple"></pre>
+                    <h2>Informations</h2>
+                    <div id="infos"></div>
+                </div>
+                <!-- XML Template Action -->
+                <div id="template_action">
+                    <h1 name="name"></h1>
+                    <p name="description"></p>
+                    <h2>Transformation</h2>
+                    <div name="template_transform"></div>
+                    <h2>Attributs</h2>
+                    <div name="template_attribute"></div>
+                    <h2>Arguments générés</h2>
+                    <div name="template_argument"></div>
+                    <h2>Remarques</h2>
+                    <p name="remarks"></p>
+                    <h2>Exemples</h2>
+                    <pre name="exemple"></pre>
+                </div>
+                <!-- Application controler -->
+                <div id="controler">
+                    <h1><span name="Module"></span>::<span name="UC"></span></h1>
+                    <p name="description"></p>
+                    <h2>Rôles</h2>
+                    <p class="label label-danger" name="Role" title="Rôle"></p>
+                    <h2>Requete</h2>
+                    <pre>
+                    POST /ctrl.php HTTP/1.1
+                    Host: localhost
+                    Accept-Charset: utf-8
+                    Keep-Alive: 300
+                    Connection: keep-alive
+                    Content-Type: application/x-www-form-urlencoded
+                    Content-Length: [SIZE]
+                    app=<span name="Module"></span>&ctrl=<span name="UC"></span>&[FIELDS]
+                    </pre>
+                    <h2>Champs</h2>
+                    <div name="fields"></div>
+                    <h2>Champs optionels</h2>
+                    <div name="op_fields"></div>
+                    <h2>Remarques</h2>
+                    <p name="remarks"></p>
+                    <h2>Exemples</h2>
+                    <pre name="exemple"></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="inline footer">
+                AceTeaM
+            </div>
+        </div>
+    </div>
+
+    <script src="wfw.js"></script>
+</body>
+</html>

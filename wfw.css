@@ -1,0 +1,71 @@
+.inline > * {
+    display: inline-block;
+}
+
+.header {
+    padding: 8px;
+    margin: 0px 0px 12px 0px;
+    background-color: black;
+    color: white;
+}
+
+.header select, .header button {
+    color: black;
+}
+
+.header h1 {
+    padding: 0;
+    margin: 5px;
+    font-size: 20pt;
+}
+
+.content {
+    padding: 12px;
+}
+
+.content > h1 {
+    padding: 12px;
+}
+
+.footer {
+    padding: 12px;
+}
+
+pre[name="exemple"] > ul > li {
+    list-style: none;
+    list-style-image: none;
+    list-style-type: none;
+    list-style-position: initial;
+}
+
+/* Menu Arborescence */
+
+#tree_menu
+{
+    padding:20px;
+}
+
+/* Templates */
+
+.class_member_list > li,
+.class_method_list > li
+{
+    list-style:none;
+    margin:1px;
+}
+
+.class_member_list > li > a,
+.class_method_list > li > a
+{
+    display:inline-block;
+    min-width:200px;
+    background-color:ActiveBorder;
+    padding-left:10px;
+}
+
+.class_member_list > li > span,
+.class_method_list > li > span
+{
+    display:inline-block;
+    margin-left:10px;
+}
